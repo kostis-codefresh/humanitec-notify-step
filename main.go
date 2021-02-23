@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-const HUMANITEC_HOST string = "api.humanitec.io"
+const HumanitecHost string = "api.humanitec.io"
 
 func main() {
 	humanitecToken := flag.String("humanitec-token", "", "<Humanitec Access Token>")
@@ -22,7 +22,7 @@ func main() {
 
 	if *mode != "notify" {
 		// latestReleaseDetails, err :=
-		getRegistryCredentials(*humanitecToken, *humanitecOrganization, HUMANITEC_HOST)
+		getRegistryCredentials(*humanitecToken, *humanitecOrganization, HumanitecHost)
 	}
 	// else {
 	// 	notifyForNewBuild(*humanitecToken, *humanitecOrganization, HUMANITEC_HOST)
