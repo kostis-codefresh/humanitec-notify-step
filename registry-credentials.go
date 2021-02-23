@@ -6,17 +6,20 @@ import (
 	"net/http"
 )
 
+//OutputFile is the file that contains the http response as is
 const OutputFile string = "creds.json"
 
 func getRegistryCredentials(humanitecToken string, humanitecOrganization string, humanitecHost string) {
 	url := "https://" + humanitecHost + "/orgs/" + humanitecOrganization + "/registries/humanitec/creds"
 
 	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	bearer := "Bearer " + humanitecToken
-	// add authorization header to the req
 	req.Header.Add("Authorization", bearer)
 
-	// Send req using http Client
 	client := &http.Client{}
 	resp, err := client.Do(req)
 

@@ -6,6 +6,7 @@ import (
 	"os"
 )
 
+// HumanitecHost is the default server for Humanitec API calls
 const HumanitecHost string = "api.humanitec.io"
 
 func main() {
