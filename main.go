@@ -2,7 +2,7 @@ package main
 
 import (
 	"flag"
-	"log"
+	"fmt"
 	"os"
 )
 
@@ -17,7 +17,7 @@ func main() {
 	flag.Parse()
 
 	if *humanitecToken == "" || *humanitecOrganization == "" || *mode == "" {
-		log.Println("All arguments are required. Use -h for full syntax")
+		fmt.Println("All arguments are required. Use -h for full syntax")
 		os.Exit(1)
 	}
 

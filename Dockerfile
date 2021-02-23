@@ -6,7 +6,10 @@ COPY . .
 
 RUN CGO_ENABLED=0 GOOS=linux go build 
 
-FROM gcr.io/distroless/base
+FROM alpine:3.12
+
+RUN apk add --no-cache jq ca-certificates
+
 COPY --from=build-env /tmp/workdir/humanitec-notify-step /app/humanitec-notify-step
 
 WORKDIR /app
