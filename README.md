@@ -33,10 +33,11 @@ A prebuilt image is already available at [https://hub.docker.com/r/kostiscodefre
 
 ## How to use the CLI
 
-This CLI can be used for the two API calls mentioned in the previous section
+This CLI can be used for the two API calls mentioned in the first section
 
-1. Run `humanitec-notify-step -organization <your-org> -humanitec-token <your-token> -mode fetch`. The will fetch the registry credentials to a file called `creds.json`
-1. Run `humanitec-notify-step -organization <your-org> -humanitec-token <your-token> -mode notify -image-name my-image -image-git-commit my-git-hash -image-git-branch main -image-url registry.humanitec.io/my-org/humanitec-example:latest` this will notify about a new image
+1. Run `humanitec-notify-step -organization <your-org> -humanitec-token <your-token> -mode fetch`. This will fetch the registry credentials and save them to a file called `creds.json`
+1. Push an image to `registry.humanitec.io` either manually or via an automated method using the credentials
+1. Run `humanitec-notify-step -organization <your-org> -humanitec-token <your-token> -mode notify -image-name my-image -image-git-commit my-git-hash -image-git-branch main -image-url registry.humanitec.io/my-org/humanitec-example:latest`.  This will notify Humanitec about the new image that you pushed
 
 You can use this CLI in any CI/CD system and the Dockerhub image in any container based pipeline.
 
