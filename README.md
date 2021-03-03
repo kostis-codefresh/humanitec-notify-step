@@ -1,14 +1,18 @@
-# Containerized plugin to notify Humanitec when a new image is pushed to its registry
+# Notify Humanitec for new images
+
+
+
+[![Go Report Card](https://goreportcard.com/badge/github.com/kostis-codefresh/humanitec-notify-step)](https://goreportcard.com/report/github.com/kostis-codefresh/humanitec-notify-step)
 
 This is a mini CLI + Container image to work with [Humanitec](https://humanitec.com/) notifications.
 
-## How Humanitec works
+## How Humanitec container images work
 
-Humanitec has an internal Docker registry that you can push images to it. The credentials for the registry are dynamic
-and you need to fetch them with an API call
+Humanitec has an internal Docker registry at `registry.humanitec.io` that you can push images to. The credentials for the registry are dynamic
+and you need to fetch them with an API call.
 
-Once you have the Credentials, you can push an image to it like any other container registry. After you finish with the push
-you also need to notify Humanitec about the new image with another API call. Here is the whole process
+Once you have the credentials, you can push an image to it like any other container registry. After you finish with the push
+you also need to notify Humanitec about the new image build with another API call. Here is the whole process:
 
 1. Signup for Humanitec
 1. Go into the Humanitec UI and create a new token from your organization screen in the *Images* section

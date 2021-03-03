@@ -1,0 +1,50 @@
+# More examples of Codefresh YAML can be found at
+# https://codefresh.io/docs/docs/yaml-examples/examples/
+
+version: "1.0"
+stages:
+  - "clone"
+  - "check"    
+  - "build"
+
+
+steps:
+  clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "kostis-codefresh/humanitec-notify-step"
+    revision: "${{CF_BRANCH}}"
+    git: "github-1"
+    stage: "clone"
+    
+  lint:
+    title: "Linting"
+    type: "freestyle" 
+    image: "golangci/golangci-lint" 
+    working_directory: "${{clone}}" 
+    commands:
+      - "golangci-lint run -v"
+    environment:
+      - GOPATH=/codefresh/volume/go
+    stage: "check"
+
+  compile:
+    title: "Compiling code"
+    type: "freestyle" 
+    image: "golang:1.13" 
+    working_directory: "${{clone}}" 
+    commands:
+      - "go build"
+    environment:
+      - GOPATH=/codefresh/volume/go
+    stage: "build"
+    
+  build:
+    title: "Building Docker image"
+    type: "build"
+    image_name: "kostiscodefresh/humanitec-notify-step"
+    working_directory: "${{clone}}"
+    tag: "latest"
+    dockerfile: "Dockerfile"
+    registry: dockerhub
+    stage: "build"
