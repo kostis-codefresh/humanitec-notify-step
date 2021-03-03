@@ -3,6 +3,7 @@
 
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/kostis-codefresh/humanitec-notify-step)](https://goreportcard.com/report/github.com/kostis-codefresh/humanitec-notify-step)
+[![Codefresh build status]( https://g.codefresh.io/api/badges/pipeline/kostis-codefresh/humanitec%2Fplugin?type=cf-1&key=eyJhbGciOiJIUzI1NiJ9.NWIwZmYzYmE1ODAzMWUwMDAxYjJlOGUw.dFYNhKzaLSj6l3LoOWe0DlGiuY0McdrmrgHWtWNC9WE)]( https://g.codefresh.io/pipelines/edit/new/builds?id=6034da536a06496e41292c33&pipeline=plugin&projects=humanitec&projectId=5fa4344ce0a5be9001c62a8f)
 
 This is a mini CLI + Container image to work with [Humanitec](https://humanitec.com/) notifications.
 
@@ -29,3 +30,7 @@ This CLI can be used for the two API calls mentioned in the previous section
 1. Run `humanitec-notify-step -organization <your-org> -humanitec-token <yourtoken> -mode notify -image-name my-image -image-git-commit my-git-hash -image-git-branch main -image-url registry.humanitec.io/my-orgo/humanitec-example:latest` this will notify about a new image
 
 You can use this CLI in an container based CI/CD system. The Docker image is available at [https://hub.docker.com/r/kostiscodefresh/humanitec-notify-step](https://hub.docker.com/r/kostiscodefresh/humanitec-notify-step)
+
+## Codefresh example
+
+See an example for Codefresh at [https://github.com/kostis-codefresh/humanitec-example](https://github.com/kostis-codefresh/humanitec-example)
