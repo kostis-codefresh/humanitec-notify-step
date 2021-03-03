@@ -18,18 +18,27 @@ you also need to notify Humanitec about the new image build with another API cal
 1. Signup for Humanitec
 1. Go into the Humanitec UI and create a new token from your organization screen in the *Images* section
 1. Perform a call to `https://api.humanitec.io/orgs/<your org>/registries/humanitec/creds`. You will get a JSON with Docker credentials
-1. Use the credentials to push an image
+1. Use the credentials to push an image like any other standard container registry
 1. Perform another call to `https://api.humanitec.io/orgs/<your org>/images/<your image name>/builds` with the [correct payload](https://api-docs.humanitec.com/#tag/Image/paths/~1orgs~1{orgId}~1images~1{imageId}~1builds/post)
 1. The image will appear in the Humanitec UI and you can use it in your deployments
+
+## How to build
+
+Run:
+
+ *  `go build` to get the executable OR
+ *  `docker build . -t humanitec-notify-container` to create a container image if you prefer docker instead or don't have access to a Go dev environment
+
+A prebuilt image is already available at [https://hub.docker.com/r/kostiscodefresh/humanitec-notify-step](https://hub.docker.com/r/kostiscodefresh/humanitec-notify-step)
 
 ## How to use the CLI
 
 This CLI can be used for the two API calls mentioned in the previous section
 
-1. Run `humanitec-notify-step -organization <your-org> -humanitec-token <yourtoken> -mode fetch`. The will fetch the registry credentials to a file called `creds.json`
-1. Run `humanitec-notify-step -organization <your-org> -humanitec-token <yourtoken> -mode notify -image-name my-image -image-git-commit my-git-hash -image-git-branch main -image-url registry.humanitec.io/my-orgo/humanitec-example:latest` this will notify about a new image
+1. Run `humanitec-notify-step -organization <your-org> -humanitec-token <your-token> -mode fetch`. The will fetch the registry credentials to a file called `creds.json`
+1. Run `humanitec-notify-step -organization <your-org> -humanitec-token <your-token> -mode notify -image-name my-image -image-git-commit my-git-hash -image-git-branch main -image-url registry.humanitec.io/my-org/humanitec-example:latest` this will notify about a new image
 
-You can use this CLI in an container based CI/CD system. The Docker image is available at [https://hub.docker.com/r/kostiscodefresh/humanitec-notify-step](https://hub.docker.com/r/kostiscodefresh/humanitec-notify-step)
+You can use this CLI in any CI/CD system and the Dockerhub image in any container based pipeline.
 
 ## Codefresh example
 
